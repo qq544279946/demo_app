@@ -3,19 +3,27 @@ name: Production
 # 仅仅当 master 代码发生变更时，用以自动化部署
 on:
   push:
-    branches:    
-      - master
+    branches:
+    - master
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    steps: 
-      - name: Checkout
-        uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 16.10.0
-      - name: Install Dependency
-        run:  npm i
-      - name: Build
-        run: npm run build
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+    - uses: actions/setup-node@v3
+      with:
+        node-version: 16.10.0
+    - name: Install Dependency
+      run: npm i
+    - name: Build
+      run: npm run build
+    - name: SSH Upload
+      uses: easingthemes/ssh-deploy@v2.1.4
+      env:
+        SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+        REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
+        REMOTE_USER: ${{ secrets.REMOTE_USER }}
+        SOURCE: "dist/"
+        TARGET: "/www/client/spa_app"
