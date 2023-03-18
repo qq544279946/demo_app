@@ -12,6 +12,8 @@ jobs:
     steps: 
       - name: Checkout
         uses: actions/checkout@v3
+      - name: Prepare
+        run: ./build.sh
       - name: Install Dependency
         run:  npm i
       - name: Build
