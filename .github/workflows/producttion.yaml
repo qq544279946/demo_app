@@ -13,7 +13,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       - name: Prepare
-        run: sudo ./build.sh
+        run: nvm install 16.10.0 & nvm use 16.10.0
       - name: Install Dependency
         run:  npm i
       - name: Build
