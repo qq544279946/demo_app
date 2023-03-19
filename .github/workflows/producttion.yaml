@@ -26,4 +26,4 @@ jobs:
         REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
         REMOTE_USER: ${{ secrets.REMOTE_USER }}
         SOURCE: "./build/"
-        TARGET: "/www/client/spa_app/"
+        TARGET: "/www/client/app1/"
