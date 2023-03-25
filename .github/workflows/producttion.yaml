@@ -19,12 +19,12 @@ jobs:
       run: npm i
     - name: Build
       run: npm run build
-   - name: Minio Deploy
-        uses: lovellfelix/minio-deploy-action@v1
-        with:
-          endpoint: ${{ secrets.MINIO_ENDPOINT }}
-          access_key: ${{ secrets.MINIO_ACCESS_KEY }}
-          secret_key: ${{ secrets.MINIO_SECRET_KEY }}
-          bucket: 'demo'
-          source_dir: 'build'
-          target_dir: '/'
+    - name: Minio Deploy
+      uses: lovellfelix/minio-deploy-action@v1
+      with:
+        endpoint: ${{ secrets.MINIO_ENDPOINT }}
+        access_key: ${{ secrets.MINIO_ACCESS_KEY }}
+        secret_key: ${{ secrets.MINIO_SECRET_KEY }}
+        bucket: 'demo'
+        source_dir: 'build'
+        target_dir: '/'
